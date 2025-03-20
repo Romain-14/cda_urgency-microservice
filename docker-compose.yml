@@ -29,12 +29,12 @@ services:
 
     mongodb:
         image: mongo:latest
-        container_name: mongodb
+        container_name: mongodbMS
         restart: always
         ports:
             - "27017:27017"
         volumes:
-            - mongodb_data:/data/db
+            - mongodbMS_data:/data/db
         networks:
             - microservice-network
 
@@ -43,4 +43,4 @@ networks:
         driver: bridge
 
 volumes:
-    mongodb_data:
+    mongodbMS_data:
