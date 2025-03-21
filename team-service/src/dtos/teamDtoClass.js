@@ -1,4 +1,4 @@
-export class TeamDTO {
+class TeamDTO {
   constructor(team) {
     this.id = team._id;
     this.type = team.type;
@@ -7,3 +7,4 @@ export class TeamDTO {
     this.updatedAt = team.updatedAt;
   }
 }
+export default TeamDTO;
