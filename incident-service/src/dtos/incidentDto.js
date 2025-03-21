@@ -4,7 +4,7 @@ import { updateIncidentStatusDto } from "./updateIncidentStatusDto.js";
 export { createIncidentDto, updateIncidentStatusDto };
 
 /*
-INSERTOIN d'une classe ????
+INSERER une classe ????
 
 class IncidentDto {
   constructor(incident) {
