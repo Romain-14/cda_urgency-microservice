@@ -14,7 +14,7 @@ teamRouter.get("/", getTeams);
 //Créer une Team
 teamRouter.post("/", createTeam);
 //Lister une team avaiable
-teamRouter.get("/avaiable", getAvaiableTeam);
+teamRouter.get("/available", getAvaiableTeam);
 //MAJ de la dispo d'une equipe
 teamRouter.patch("/upadateteamstatus/:id", updateTeamStatus);
 
