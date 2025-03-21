@@ -34,11 +34,11 @@ const incidentSchema = new Schema({
         required: true,
         ref: "Operator"
     },
-    teamId: {
+    /*teamId: {
         type:Schema.Types.ObjectId,
         required: true,
         ref: "Team"
-    },
+    },*/
 
 }, {
     timestamps: true
