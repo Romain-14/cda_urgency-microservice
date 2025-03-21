@@ -1,39 +1,37 @@
-import { updateIncidentStatus } from "../repositories/incidentRepository.js";
-import { fetchIncidents, reportIncident } from "../services/incidentService.js"
+import IncidentRepository from "../repositories/incidentRepository.js";
+import CreateIncidentDto from "../dtos/createIncidentDto.js";
+import UpdateIncidentStatusDto from "../dtos/updateIncidentStatusDto.js";
 
-export const createIncident = async (req, res) => {
+const createIncident = async (req, res) => {
     try {
-        const { description, localisation, operatorId, callerId } = req.body
-
-        const newIncident = await reportIncident(description, localisation, operatorId, callerId);
-
-        res.status(200).json({ message: "Incident crée avec succès", incident: newIncident })
-    } catch (err) {
-        res.status(500).json({ error: err.message })
+        const incidentDto = new CreateIncidentDto(req.body);
+        const newIncident = await IncidentRepository.createIncident(incidentDto);
+        res.status(201).json(newIncident);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
-}
+};
 
-export const getIncidents = async (req, res) => {
+const getAllIncidents = async (req, res) => {
     try {
-        const incidents = await fetchIncidents();
-        res.status(200).json(incidents)
-    } catch (err) {
-        res.status(500).json({ error: err.message })
+        const incidents = await IncidentRepository.getAllIncidents();
+        res.json(incidents);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
     }
-}
+};
 
-export const editStatusIncident = async (req, res) => {
+const updateIncidentStatus = async (req, res) => {
     try {
-
-        const { id } = req.params;
-        const { status } = req.body;
-
-        const editStatusIncident = await updateIncidentStatus(id, status)
-
-        res.status(200).json({ message: "Status MAJ avec succès", incident: editStatusIncident })
-
-    } catch (err) {
-        res.status(500).json({ error: err.message })
-
+        const statusDto = new UpdateIncidentStatusDto(req.body);
+        const updatedIncident = await IncidentRepository.updateIncidentStatus(req.params.id, statusDto.status);
+        if (!updatedIncident) {
+            return res.status(404).json({ message: "Incident non trouvé" });
+        }
+        res.json(updatedIncident);
+    } catch (error) {
+        res.status(400).json({ message: error.message });
     }
-}
+};
+
+export { createIncident, getAllIncidents, updateIncidentStatus };
