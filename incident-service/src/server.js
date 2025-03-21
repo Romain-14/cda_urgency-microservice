@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
     res.json({msg: "service incident is running"});
 });
 
-app.use(incidentRoutes);
+app.use("api/incidents", incidentRoutes);
 
 connectDB();
 

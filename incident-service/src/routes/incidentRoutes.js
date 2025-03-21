@@ -3,8 +3,8 @@ import { createIncident, getAllIncidents, updateIncidentStatus } from "../contro
 
 const router = express.Router();
 
-router.post("/api/incidents", createIncident);
-router.get("/api/incidents", getAllIncidents);
-router.patch("/api/incidents/:id/status", updateIncidentStatus);
+router.post("/", createIncident);
+router.get("/", getAllIncidents);
+router.patch("/:id/status", updateIncidentStatus);
 
 export default router;
