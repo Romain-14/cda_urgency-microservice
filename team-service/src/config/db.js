@@ -1,6 +1,11 @@
+import dotenv from "dotenv";
 import mongoose from "mongoose";
 
+dotenv.config();
+
 const { DB_NAME, DB_PASS, DB_PORT, DB_USER } = process.env;
+
+console.log("Database Configuration:", { DB_NAME, DB_PASS, DB_PORT, DB_USER });
 
 const connectDB = async () => {
   try {

@@ -4,6 +4,7 @@ import {
   createTeam,
   getAvaiableTeam,
   getTeams,
+  updateTeamStatus,
 } from "../controllers/teamController.js";
 
 const teamRouter = Router();
@@ -15,6 +16,6 @@ teamRouter.post("/", createTeam);
 //Lister une team avaiable
 teamRouter.get("/avaiable", getAvaiableTeam);
 //MAJ de la dispo d'une equipe
-// teamRouter.patch("/:id", updateTeamStatus);
+teamRouter.patch("/upadateteamstatus/:id", updateTeamStatus);
 
 export default teamRouter;

@@ -27,7 +27,7 @@ import {
   getOneAvaiableTeam,
   updateThatTeamStatus,
 } from "../repositories/teamRepository.js";
-import { TeamDTO } from "./teamDtoClass.js"; // Import du DTO
+import TeamDTO from "./teamDtoClass.js"; // Import du DTO
 
 export const createNewTeam = async (type) => {
   const newTeam = await createTeam({ type });
@@ -36,7 +36,7 @@ export const createNewTeam = async (type) => {
 
 export const fetchTeams = async () => {
   const teams = await getAllTeams();
-  return teams.map((team) => new TeamDTO(team)); // Transforme chaque équipe en DTO
+  return teams.map((team) => new TeamDTO(team));
 };
 
 export const fetchAvaiableTeam = async () => {
