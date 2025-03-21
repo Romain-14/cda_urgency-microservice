@@ -4,15 +4,9 @@ import Team from "../models/Team.js"
 export const createIncident = async (data) => {
     
     const availableTeam = await Team.findOneAndUpdate(
-        {
-            availability: true
-        }, 
-        {
-            availability: false
-        },
-        {
-            sort: { updatedAt: 1 }
-        } 
+        { availability: true}, 
+        {availability: false},
+        {sort: { updatedAt: 1 }} 
     )
 
     if (!availableTeam) {
