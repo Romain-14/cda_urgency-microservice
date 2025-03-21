@@ -31,7 +31,12 @@ export const createCaller = async (req, res) => {
 export const getCallers = async (req, res) => {
 	try {
 		const callers = await findCallers();
-		res.status(200).json(callers);
+		const newCallers = callers.map((caller) => new CallerDto(caller));
+        
+		res.status(200).json({
+			message: "Liste des personnes récupérés !",
+			newCallers,
+		});
 	} catch (err) {
 		res.status(500).json({ error: err.message });
 	}
@@ -40,7 +45,10 @@ export const getCallers = async (req, res) => {
 export const getCaller = async (req, res) => {
 	try {
 		const caller = await findCaller(req.params.id);
-		res.status(200).json(caller);
+		res.status(200).json({
+			message: "Personne récupérée !",
+			caller: new CallerDto(caller),
+		});
 	} catch (err) {
 		res.status(500).json({ error: err.message });
 	}
