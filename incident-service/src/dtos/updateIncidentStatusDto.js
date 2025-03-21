@@ -8,4 +8,4 @@ class UpdateIncidentStatusDto {
   }
 }
 
-export default UpdateIncidentStatusDto;
+export default UpdateIncidentStatusDto; 

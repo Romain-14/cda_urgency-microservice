@@ -34,4 +34,5 @@ const updateIncidentStatus = async (req, res) => {
     }
 };
 
-export { createIncident, getAllIncidents, updateIncidentStatus };
+export { createIncident, getAllIncidents, updateIncidentStatus }; 
+
