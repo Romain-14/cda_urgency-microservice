@@ -1,26 +1,3 @@
-// import {
-//   createTeam,
-//   getAllTeams,
-//   getOneAvaiableTeam,
-//   updateThatTeamStatus,
-// } from "../repositories/teamRepository.js";
-
-// export const createNewTeam = async (type) => {
-//   return await createTeam({ type });
-// };
-
-// export const fetchTeams = async () => {
-//   //Fait référence au repository
-//   return await getAllTeams();
-// };
-
-// export const fetchAvaiableTeam = async () => {
-//   return await getOneAvaiableTeam();
-// };
-
-// export const updateTheTeamStatus = async (teamId, availability) => {
-//   return await updateThatTeamStatus(teamId, availability);
-// };
 import {
   createTeam,
   getAllTeams,
@@ -31,7 +8,7 @@ import TeamDTO from "./teamDtoClass.js"; // Import du DTO
 
 export const createNewTeam = async (type) => {
   const newTeam = await createTeam({ type });
-  return new TeamDTO(newTeam); // Transformation en DTO
+  return new TeamDTO(newTeam);
 };
 
 export const fetchTeams = async () => {
