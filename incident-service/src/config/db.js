@@ -1,18 +1,17 @@
 import mongoose from "mongoose";
-import dotenv from "dotenv";
 
-dotenv.config(); 
+const { DB_NAME, DB_PASS, DB_PORT, DB_USER } = process.env;
 
-
-export const connectDB = async () => {
-  try {
-    await mongoose.connect(process.env.MONGO_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    console.log("Connecté à la base de données MongoDB");
-  } catch (error) {
-    console.error(`Erreur de connexion à MongoDB : ${error.message}`);
-    process.exit(1);
-  }
+const connectDB = async () => {
+    try {
+        const response = await mongoose.connect(
+            `mongodb://${DB_USER}:${DB_PASS}@localhost:${DB_PORT}/${DB_NAME}?authSource=admin`
+        );
+        console.log("MongoDB connected to database:", response.connection.name);
+    } catch (error) {
+        console.error("MongoDB connection failed:", error);
+        process.exit(1);
+    }
 };
+
+export { connectDB };
