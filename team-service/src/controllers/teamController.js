@@ -8,8 +8,11 @@ import {
 export const createTeam = async (req, res) => {
   try {
     const { type } = req.body;
-
     const newTeam = await createNewTeam(type);
+
+    if (!type) {
+      return res.status(400).json({ error: "Type is required" });
+    }
 
     res.status(200).json({ message: "Team create with sucess", team: newTeam });
   } catch (err) {
@@ -30,6 +33,11 @@ export const getTeams = async (req, res) => {
 export const getAvaiableTeam = async (req, res) => {
   try {
     const avaiableTeam = await fetchAvaiableTeam();
+
+    if (!avaiableTeam) {
+      return res.status(404).json({ error: "No available team found" });
+    }
+
     res.status(200).json(avaiableTeam);
   } catch (err) {
     res.status(500).json({ error: err.message });
