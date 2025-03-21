@@ -7,7 +7,7 @@ export const createIncident = async (req, res) => {
 
         const newIncident = await reportIncident(description, localisation, operatorId, callerId);
 
-        res.status(200).json({ message: "Incident create with sucess", incident: newIncident })
+        res.status(200).json({ message: "Incident crée avec succès", incident: newIncident })
     } catch (err) {
         res.status(500).json({ error: err.message })
     }
@@ -30,7 +30,7 @@ export const editStatusIncident = async (req, res) => {
 
         const editStatusIncident = await updateIncidentStatus(id, status)
 
-        res.status(200).json({ message: "Status updated with sucess", incident: editStatusIncident })
+        res.status(200).json({ message: "Status MAJ avec succès", incident: editStatusIncident })
 
     } catch (err) {
         res.status(500).json({ error: err.message })
